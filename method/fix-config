@@ -1,0 +1,7 @@
+#!/bin/bash
+
+CONFIG=/usbkey/config
+ADMIN_MAC=$(data-get sdc:nics | json -a mac)
+
+cp ${CONFIG} ${CONFIG}.old &&\
+sed -e "s/^admin_nic=.*/admin_nic=${ADMIN_MAC}/" ${CONFIG}.old > ${CONFIG}

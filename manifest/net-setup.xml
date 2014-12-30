@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE service_bundle SYSTEM "/usr/share/lib/xml/dtd/service_bundle.dtd.1">
+
+<service_bundle type='manifest' name='site:net-setup'>
+<service name='site/net-setup' type='service' version='1'>
+        <create_default_instance enabled='true' />
+        <single_instance />
+            <dependency name='net-physical' grouping='require_all' restart_on='none' type='service'>
+        <service_fmri value='svc:/network/physical'/>
+        </dependency>
+        <dependency name='filesystem' grouping='require_all' restart_on='none' type='service'>
+            <service_fmri value='svc:/system/filesystem/local'/>
+        </dependency>
+
+	<exec_method type='method' name='start' exec='/opt/custom/smf/method/net-setup' timeout_seconds='0' />
+        <exec_method type='method' name='stop' exec=':true' timeout_seconds='0' />
+
+        <property_group name='startd' type='framework'>
+                <propval name='duration' type='astring' value='transient' />
+        </property_group>
+
+        <stability value='Unstable' />
+</service>
+</service_bundle>
