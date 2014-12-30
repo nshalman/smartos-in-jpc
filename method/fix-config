@@ -5,4 +5,4 @@ ADMIN_MAC=$(mdata-get sdc:nics | json -a mac)
 
 cp ${CONFIG} ${CONFIG}.old &&\
 sed -e "s/^admin_nic=.*/admin_nic=${ADMIN_MAC}/" ${CONFIG}.old > ${CONFIG}
-sysinfo -f
+diff /usbkey/config{.old,} || reboot
