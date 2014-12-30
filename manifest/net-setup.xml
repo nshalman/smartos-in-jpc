@@ -5,14 +5,14 @@
 <service name='site/net-setup' type='service' version='1'>
         <create_default_instance enabled='true' />
         <single_instance />
-            <dependency name='net-physical' grouping='require_all' restart_on='none' type='service'>
-        <service_fmri value='svc:/network/physical'/>
+        <dependency name='net-physical' grouping='require_all' restart_on='none' type='service'>
+            <service_fmri value='svc:/network/physical'/>
         </dependency>
         <dependency name='filesystem' grouping='require_all' restart_on='none' type='service'>
             <service_fmri value='svc:/system/filesystem/local'/>
         </dependency>
 
-	<exec_method type='method' name='start' exec='/opt/custom/smf/method/net-setup' timeout_seconds='0' />
+	<exec_method type='method' name='start' exec='/opt/custom/smf/method/net-setup' timeout_seconds='2' />
         <exec_method type='method' name='stop' exec=':true' timeout_seconds='0' />
 
         <property_group name='startd' type='framework'>

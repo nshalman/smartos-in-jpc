@@ -1,0 +1,37 @@
+<?xml version='1.0'?>
+<!DOCTYPE service_bundle SYSTEM '/usr/share/lib/xml/dtd/service_bundle.dtd.1'>
+<service_bundle type='manifest' name='export'>
+  <service name='network/physical' type='service' version='0'>
+    <dependency name='loopback' grouping='require_all' restart_on='none' type='service'>
+      <service_fmri value='svc:/network/loopback'/>
+    </dependency>
+    <dependency name='joyent' grouping='require_all' restart_on='none' type='service'>
+      <service_fmri value='svc:/system/filesystem/smartdc'/>
+    </dependency>
+    <dependency name='fix-config' grouping='require_all' restart_on='none' type='service'>
+      <service_fmri value='svc:/site/fix-config'/>
+    </dependency>
+    <dependency name='mdata-fetch' grouping='optional_all' restart_on='none' type='service'>
+      <service_fmri value='svc:/smartdc/mdata:fetch'/>
+    </dependency>
+    <instance name='default' enabled='true'>
+      <exec_method name='start' type='method' exec='/lib/svc/method/net-physical' timeout_seconds='600'/>
+      <exec_method name='stop' type='method' exec=':true' timeout_seconds='3'/>
+      <property_group name='startd' type='framework'>
+        <propval name='duration' type='astring' value='transient'/>
+      </property_group>
+      <property_group name='ibd' type='system'>
+        <propval name='ibd_upgraded' type='boolean' value='true'/>
+      </property_group>
+      <template>
+        <common_name>
+          <loctext xml:lang='C'>physical network interfaces</loctext>
+        </common_name>
+        <documentation>
+          <manpage title='ifconfig' section='1M' manpath='/usr/share/man'/>
+        </documentation>
+      </template>
+    </instance>
+    <stability value='Unstable'/>
+  </service>
+</service_bundle>
