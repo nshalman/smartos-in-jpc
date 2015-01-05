@@ -4,7 +4,7 @@
 eval $(sysinfo -p)
 
 STUB=switch0
-nictagadm list -p | grep i-q ${STUB} || nictagadm add -l ${STUB}
+nictagadm list -p | grep -iq ${STUB} || nictagadm add -l ${STUB}
 
 ## setup gw0
 if [ `dladm show-vnic | grep gw0 | wc -l` -ne 1 ]; then
