@@ -12,7 +12,7 @@
             <service_fmri value='svc:/system/filesystem/local'/>
         </dependency>
 
-	<exec_method type='method' name='start' exec='/opt/custom/smf/method/net-setup' timeout_seconds='2' />
+	<exec_method type='method' name='start' exec='/opt/custom/smf/method/net-setup' timeout_seconds='20' />
         <exec_method type='method' name='stop' exec=':true' timeout_seconds='0' />
 
         <property_group name='startd' type='framework'>
