@@ -47,4 +47,5 @@ echo "map ${NIC_admin} from 172.16.0.0/24 to any -> 0/32 portmap tcp/udp auto" >
 echo "map ${NIC_admin} from 172.16.0.0/24 to any -> 0/32" >> /etc/ipf/ipnat.conf
 
 ## enable firewall / NET
+svcadm refresh ipfilter
 svcadm enable ipfilter
