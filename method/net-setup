@@ -23,9 +23,9 @@ fi
 ## setup firewall
 echo "# Default policies" >> /etc/ipf/ipf.conf
 echo "pass out all keep state" >> /etc/ipf/ipf.conf
-echo "block in all" >> /etc/ipf/ipf.conf
-echo "block return-rst in log first proto tcp all" >> /etc/ipf/ipf.conf
-echo "block return-icmp(host-unr) in log proto udp all" >> /etc/ipf/ipf.conf
+#echo "block in all" >> /etc/ipf/ipf.conf
+#echo "block return-rst in log first proto tcp all" >> /etc/ipf/ipf.conf
+#echo "block return-icmp(host-unr) in log proto udp all" >> /etc/ipf/ipf.conf
 echo "# Allow Loopback" >> /etc/ipf/ipf.conf
 echo "pass in quick on lo0 all" >> /etc/ipf/ipf.conf
 echo "pass out quick on lo0 all" >> /etc/ipf/ipf.conf
